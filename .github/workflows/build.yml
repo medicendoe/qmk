@@ -78,6 +78,13 @@ jobs:
         mkdir -p config
         cp -r app/boards/shields/corne/custom/zmk/* config/
         
+    - name: Initialize west workspace
+      run: |
+        cd app
+        west init -l .
+        west update
+        west zephyr-export
+        
     - name: Build ZMK firmware (left)
       run: |
         cd app
