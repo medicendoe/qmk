@@ -1,4 +1,4 @@
-name: Build QMK Firmware
+name: Build QMK and ZMK Firmware
 
 on:
   push:
@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  build-qmk:
     runs-on: ubuntu-latest
     
     steps:
@@ -52,4 +52,51 @@ jobs:
         path: |
           *.hex
           *.json
+        retention-days: 30
+
+  build-zmk:
+    runs-on: ubuntu-latest
+    container:
+      image: zmkfirmware/zmk-build-arm:stable
+    
+    steps:
+    - name: Checkout ZMK
+      uses: actions/checkout@v4
+      with:
+        repository: zmkfirmware/zmk
+        ref: main
+        
+    - name: Checkout keymap
+      uses: actions/checkout@v4
+      with:
+        path: app/boards/shields/corne/custom
+        sparse-checkout: |
+          zmk/
+        
+    - name: Copy keymap files
+      run: |
+        mkdir -p config
+        cp app/boards/shields/corne/custom/zmk/* config/
+        
+    - name: Build ZMK firmware (left)
+      run: |
+        cd app
+        west build -d build/left -b nice_nano_v2 -- -DSHIELD=corne_left -DZMK_CONFIG="../config"
+        
+    - name: Build ZMK firmware (right)
+      run: |
+        cd app
+        west build -d build/right -b nice_nano_v2 -- -DSHIELD=corne_right -DZMK_CONFIG="../config"
+        
+    - name: Copy firmware files
+      run: |
+        cp app/build/left/zephyr/zmk.uf2 corne_left-nice_nano_v2-zmk.uf2
+        cp app/build/right/zephyr/zmk.uf2 corne_right-nice_nano_v2-zmk.uf2
+        
+    - name: Upload ZMK firmware
+      uses: actions/upload-artifact@v4
+      with:
+        name: zmk-firmware
+        path: |
+          *.uf2
         retention-days: 30
