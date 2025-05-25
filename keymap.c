@@ -40,7 +40,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
         RALT(KC_TILD), KC_EXLM,  KC_AT,  KC_HASH, KC_DLR,  KC_PERC,              RALT(KC_CIRC), KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_PLUS,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-        KC_SLSH, KC_MINS, US_IQUE, KC_BSLS, KC_RBRC, KC_LBRC,                      KC_LCBR, KC_RCBR, KC_PIPE, US_IEXL, KC_UNDS, US_QUES,
+        KC_SLSH, KC_MINS, KC_QUES, KC_BSLS, KC_RBRC, KC_LBRC,                      KC_LCBR, KC_RCBR, KC_PIPE, KC_EXLM, KC_UNDS, KC_QUES,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                             KC_TRNS, TG(_Simbols), KC_TRNS,    KC_TRNS, KC_TRNS, KC_TRNS
                                       //`--------------------------'  `---------------------------
