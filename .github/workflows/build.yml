@@ -48,7 +48,7 @@ jobs:
     - name: Upload firmware
       uses: actions/upload-artifact@v4
       with:
-        name: firmware and layout
+        name: qmk-firmware
         path: |
           *.hex
           *.json
