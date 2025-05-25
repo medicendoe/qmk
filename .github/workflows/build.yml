@@ -76,7 +76,7 @@ jobs:
     - name: Copy keymap files
       run: |
         mkdir -p config
-        cp -r app/boards/shields/corne/custom/zmk/* config/
+        cp -r app/boards/shields/corne/custom/zmk/config/* config/
         
     - name: Initialize west workspace
       run: |
