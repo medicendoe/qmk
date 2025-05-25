@@ -1,0 +1,44 @@
+name: Build QMK Firmware
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout QMK
+      uses: actions/checkout@v4
+      with:
+        repository: qmk/qmk_firmware
+        submodules: recursive
+        
+    - name: Checkout keymap
+      uses: actions/checkout@v4
+      with:
+        path: keyboards/crkbd/keymaps/custom
+        
+    - name: Install QMK CLI
+      run: python3 -m pip install qmk
+      
+    - name: Setup QMK
+      run: |
+        qmk setup -H ${{ github.workspace }} -y
+        qmk config user.keyboard=crkbd
+        qmk config user.keymap=custom
+        
+    - name: Build firmware
+      run: qmk compile -kb crkbd -km custom
+      
+    - name: Upload firmware
+      uses: actions/upload-artifact@v4
+      with:
+        name: qmk-firmware
+        path: |
+          *.hex
+        retention-days: 30
