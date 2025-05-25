@@ -26,7 +26,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
         KC_MINS,    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                         KC_Y,    KC_U,    KC_I,    KC_O,    KC_P, KC_PLUS,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-        KC_TAB, LSFT_T(KC_A), LALT_T(KC_S), LCTL_T(KC_D), LGUI_T(KC_F), KC_G,                         KC_H,    KC_J,    KC_K,    KC_L, KC_SCLN, KC_QUOT,
+        KC_TAB, LSFT_T(KC_A), LALT_T(KC_S), LCTL_T(KC_D), LGUI_T(KC_F), KC_G,                         KC_H,    RGUI_T(KC_J),    RCTL_T(KC_K),    RALT_T(KC_L), RSFT_T(KC_SCLN), KC_QUOT,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
         TD(Shift_Caps), KC_Z, KC_X,   KC_C,    KC_V,    KC_B,                         KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH, KC_RSFT,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
@@ -130,6 +130,7 @@ bool oled_task_user(void) {
     if (is_keyboard_master()) {
         oled_set_cursor(0, 1);
 
+        oled_write_P(PSTR("-----\n"),
         oled_write_P(get_highest_layer(layer_state) == _Simbols ? PSTR("> SIM\n") : PSTR("  SIM\n"), false);
         oled_write_P(get_highest_layer(layer_state) == _Movement ? PSTR("> MOV\n") : PSTR("  MOV\n"), false);
         oled_write_P(get_highest_layer(layer_state) == _Numpad ? PSTR("> NUM\n") : PSTR("  NUM\n"), false);
