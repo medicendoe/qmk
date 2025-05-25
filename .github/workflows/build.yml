@@ -35,10 +35,21 @@ jobs:
     - name: Build firmware
       run: qmk compile -kb crkbd -km custom
       
+    - name: Export keymap JSON
+      run: qmk c2json -kb crkbd -km custom > keymap.json
+      
     - name: Upload firmware
       uses: actions/upload-artifact@v4
       with:
-        name: qmk-firmware
+        name: firmware
         path: |
           *.hex
+        retention-days: 30
+        
+    - name: Upload keymap JSON
+      uses: actions/upload-artifact@v4
+      with:
+        name: keymap
+        path: |
+          *.json
         retention-days: 30
