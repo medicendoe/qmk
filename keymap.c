@@ -130,7 +130,7 @@ bool oled_task_user(void) {
     if (is_keyboard_master()) {
         oled_set_cursor(0, 1);
 
-        oled_write_P(PSTR("-----\n")),
+        oled_write_P(PSTR("-----\n"));
         oled_write_P(get_highest_layer(layer_state) == _Simbols ? PSTR("> SIM\n") : PSTR("  SIM\n"), false);
         oled_write_P(get_highest_layer(layer_state) == _Movement ? PSTR("> MOV\n") : PSTR("  MOV\n"), false);
         oled_write_P(get_highest_layer(layer_state) == _Numpad ? PSTR("> NUM\n") : PSTR("  NUM\n"), false);
