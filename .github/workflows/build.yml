@@ -41,15 +41,8 @@ jobs:
     - name: Upload firmware
       uses: actions/upload-artifact@v4
       with:
-        name: firmware
+        name: firmware and layout
         path: |
           *.hex
-        retention-days: 30
-        
-    - name: Upload keymap JSON
-      uses: actions/upload-artifact@v4
-      with:
-        name: keymap
-        path: |
           *.json
         retention-days: 30

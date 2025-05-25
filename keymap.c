@@ -13,22 +13,14 @@ enum layer_names {
     _ModeShift,
 };
 
-enum {
-    Shift_Caps,
-};
-
-tap_dance_action_t tap_dance_actions[] = {
-    [Shift_Caps] = ACTION_TAP_DANCE_DOUBLE(KC_LSFT, KC_CAPS),
-};
-
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_Type] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-        KC_MINS,    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                         KC_Y,    KC_U,    KC_I,    KC_O,    KC_P, KC_PLUS,
+        KC_RBRC,    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                         KC_Y,    KC_U,    KC_I,    KC_O,    KC_P, KC_LBRC,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
         KC_TAB, LSFT_T(KC_A), LALT_T(KC_S), LCTL_T(KC_D), LGUI_T(KC_F), KC_G,                         KC_H,    RGUI_T(KC_J),    RCTL_T(KC_K),    RALT_T(KC_L), RSFT_T(KC_SCLN), KC_QUOT,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-        TD(Shift_Caps), KC_Z, KC_X,   KC_C,    KC_V,    KC_B,                         KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH, KC_RSFT,
+        KC_MINS, KC_Z, KC_X,   KC_C,    KC_V,    KC_B,                         KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH, KC_PLUS,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                     MO(_ModeShift), KC_ESC,  KC_SPC,     KC_ENT,   KC_BSPC, MO(_ModeShift)
                                       //`--------------------------'  `--------------------------'
@@ -36,9 +28,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [_Simbols] = LAYOUT_split_3x6_3(
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-        RALT(KC_GRV), KC_1, KC_2,    KC_3,    KC_4,    KC_5,                         KC_6,    KC_7,    KC_8,    KC_9,    KC_0,  KC_EQL,
+        KC_GRV, KC_1, KC_2,    KC_3,    KC_4,    KC_5,                         KC_6,    KC_7,    KC_8,    KC_9,    KC_0,  KC_EQL,
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-        RALT(KC_TILD), KC_EXLM,  KC_AT,  KC_HASH, KC_DLR,  KC_PERC,              RALT(KC_CIRC), KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_PLUS,
+        KC_TILD, LSFT_T(KC_EXLM),  LALT_T(KC_AT),  LCTL_T(KC_HASH), LGUI_T(KC_DLR),  KC_PERC,              KC_CIRC, RGUI_T(KC_AMPR), RCTL_T(KC_ASTR), RALT_T(KC_LPRN), RSFT_T(KC_RPRN), KC_PLUS,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
         KC_SLSH, KC_MINS, KC_QUES, KC_BSLS, KC_RBRC, KC_LBRC,                      KC_LCBR, KC_RCBR, KC_PIPE, KC_EXLM, KC_UNDS, KC_QUES,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
@@ -74,9 +66,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
         KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                      MS_LEFT, MS_DOWN,  MS_UP, MS_RGHT,   KC_NO,   KC_NO,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-        KC_NO,   KC_NO,   KC_NO, MS_BTN1, MS_BTN2, MS_WHLU,                      KC_LEFT, KC_DOWN,   KC_UP,KC_RIGHT,   KC_NO,   KC_NO,
+        KC_NO,   KC_NO,   KC_NO,   G(KC_H),   G(KC_L),   KC_NO,                      KC_LEFT, KC_DOWN,   KC_UP,KC_RIGHT,   KC_NO,   KC_NO,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-        KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO, MS_WHLD,                      KC_HOME, KC_PGDN, KC_PGUP,  KC_END,   KC_NO,   KC_NO,
+        KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO, KC_NO,                      KC_HOME, KC_PGDN, KC_PGUP,  KC_END,   KC_NO,   KC_NO,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                             KC_TRNS, TG(_Movement),   KC_NO,      KC_NO,   KC_NO,   KC_NO
                                       //`--------------------------'  `--------------------------'
