@@ -22,6 +22,13 @@ jobs:
       uses: actions/checkout@v4
       with:
         path: keyboards/crkbd/keymaps/custom
+        sparse-checkout: |
+          qmk/
+        
+    - name: Copy keymap files
+      run: |
+        cp keyboards/crkbd/keymaps/custom/qmk/* keyboards/crkbd/keymaps/custom/
+        rm -rf keyboards/crkbd/keymaps/custom/qmk
         
     - name: Install QMK CLI
       run: python3 -m pip install qmk
