@@ -76,7 +76,7 @@ jobs:
     - name: Copy keymap files
       run: |
         mkdir -p config
-        cp app/boards/shields/corne/custom/zmk/* config/
+        cp -r app/boards/shields/corne/custom/zmk/* config/
         
     - name: Build ZMK firmware (left)
       run: |
