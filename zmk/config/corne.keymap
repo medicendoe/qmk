@@ -19,6 +19,11 @@
 #define CON 6
 #define MSF 7
 
+&mt {
+    tapping-term-ms = <200>;
+    flavor = "tap-preferred";
+};
+
 / {
         keymap {
                 compatible = "zmk,keymap";
